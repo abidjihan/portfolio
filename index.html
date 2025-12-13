@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MD. ABIDUL ISLAM - Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background:#0d1b2a;
+            color:white;
+        }
+        header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        section {
+            padding: 40px;
+            max-width: 900px;
+            margin: auto;
+            border-radius:15px;
+            box-shadow:0 6px 20px rgba(0,0,0,0.3);
+            background:#1b263b;
+            transition: 0.3s;
+            margin-bottom: 20px;
+        }
+        section.active {
+            border: 2px solid #287bff;
+            box-shadow: 0 0 15px #287bff;
+        }
+        .certificates {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .cert-card {
+            background: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .cert-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            background: #1e3c72;
+            cursor: pointer;
+        }
+        .cert-card::before{
+            content:"Certificate";
+            display:block;
+            color:#9ecbff;
+            font-size:0.9rem;
+            margin-bottom:8px;
+        }
+        .glow-btn{
+            padding:12px 20px;
+            background:#287bff;
+            border:none;
+            border-radius:10px;
+            color:white;
+            font-weight:bold;
+            cursor:pointer;
+            box-shadow:0 0 10px #4da3ff, 0 0 20px #4da3ff;
+            transition:0.3s;
+        }
+        .glow-btn:hover{
+            box-shadow:0 0 15px #1e90ff, 0 0 30px #1e90ff;
+            transform:scale(1.05);
+        }
+        .card-hover:hover{
+            transform:translateY(-6px);
+            box-shadow:0 6px 20px rgba(0,0,0,0.5) !important;
+        }
+        nav {
+            background:#287bff;
+            padding:15px;
+            text-align:center;
+            box-shadow:0 4px 10px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav a{
+            color:white;
+            margin:0 15px;
+            font-weight:bold;
+            text-decoration:none;
+            transition:0.3s;
+        }
+        nav a:hover{
+            color:#ffdd57;
+        }
+        html{
+            scroll-behavior:smooth;
+        }
+        .fade{
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn{
+            from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);}
+        }
+        h2 {
+            padding: 10px;
+            border-radius:10px;
+        }
+        #skills ul li, #experience p, #about p, #projects p {
+            font-weight:bold;
+            font-size:1.15rem;
+            margin-bottom: 8px;
+        }
+        #contact a {
+            color:#4da3ff;
+            text-decoration:none;
+        }
+        #contact a:hover {
+            text-decoration:underline;
+        }
+    
+        /* Certificate Modal */
+        .modal{
+            display:none;
+            position:fixed;
+            z-index:2000;
+            left:0;top:0;
+            width:100%;height:100%;
+            background:rgba(0,0,0,0.85);
+            justify-content:center;
+            align-items:center;
+        }
+        .modal img{
+            max-width:90%;
+            max-height:90%;
+            border-radius:12px;
+            box-shadow:0 0 25px #4da3ff;
+        }
+        .modal span{
+            position:absolute;
+            top:20px;right:30px;
+            font-size:2.5rem;
+            color:white;
+            cursor:pointer;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #1b263b;
+            color: #9ecbff;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#certs">Certificates</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <header>
+        <div style="display:flex; flex-direction:column; align-items:center;">
+            <div style="width:140px; height:140px; border-radius:50%; border:4px solid white; margin-bottom:20px; background: linear-gradient(135deg, #4da3ff, #287bff); display: flex; align-items: center; justify-content: center; font-size: 3rem;">👨‍💻</div>
+            <h1 style="font-size:2.5rem; margin:0;">MD. ABIDUL ISLAM</h1>
+            <p style="margin-top:10px; font-size:1.2rem; opacity:0.9;">• Cybersecurity Enthusiast • Networking • Student</p>
+            <p style="margin-top:5px; font-size:1rem; opacity:0.9;">B.Sc. in CSE – American International University–Bangladesh (AIUB)</p>
+            <p style="margin-top:5px; font-size:1rem; opacity:0.9;">📧 abidjihan1123@gmail.com</p>
+        </div>
+    </header>
+
+    <section id="about" class="fade">
+        <h2>About Me</h2>
+        <p>
+            I am a B.Sc. in CSE student at American International University–Bangladesh (AIUB), focusing on cybersecurity, networking, and emerging technologies. My experience includes completing several Cisco certification programs and participating in hands-on projects that enhance practical understanding of security and network systems.
+        </p>
+        <h3>Course Completion</h3>
+        <ol style="line-height:1.8; font-size:1.05rem;">
+            <li>CCNA – Cisco Certified Network Associate</li>
+            <li>CCNP – Cisco Certified Network Professional</li>
+            <li>DevNet – Cisco DevNet Associate</li>
+            <li>CyberOps Associate – Cisco CyberOps</li>
+            <li>Introduction to Cybersecurity – Cisco</li>
+            <li>Junior Cybersecurity Analyst – Cisco</li>
+            <li>Ethical Hacker – Cisco</li>
+            <li>Cyber Threat Management – Cisco</li>
+            <li>Industrial Cybersecurity Essentials (2025) – Cisco</li>
+            <li>Industrial Networking Essentials (2025) – Cisco</li>
+            <li>CCEP – Certified Cybersecurity Educator Professional</li>
+        </ol>
+    </section>
+
+    <section id="experience" class="fade">
+        <h2>Experience</h2>
+        <p><strong>• Finalist – Cisco National Skill Competition 2025 </strong></p>
+        <p><strong>• Participated in multiple CTF (Capture The Flag) competitions</strong></p>
+        <p><strong>• Ranked in the Top 5% on TryHackMe</strong></p>
+    </section>
+
+    <section id="skills" class="fade">
+        <h2>Skills</h2>
+        <ul style="line-height:1.8; font-size:1.1rem;">
+            <li>• Cybersecurity Fundamentals</li>
+            <li>• Networking</li>
+            <li>• API Security Basics</li>
+            <li>• Linux & Shell Scripting</li>
+            <li>• Packet Analysis (Wireshark)</li>
+        </ul>
+    </section>
+
+    <section id="certs" class="fade">
+        <h2>Certificates</h2>
+        <div class="certificates">
+            <div class="cert-card card-hover">
+                <img class="cert-img" src="cert_ccna_introduction_to_networks.png" alt="CCNA Introduction to Networks" />
+                <p>CCNA – Introduction to Networks</p>
+            </div>
+            <div class="cert-card card-hover">
+                <img class="cert-img" src="cert_ccna_switching_routing_wireless.png" alt="CCNA Switching, Routing & Wireless" />
+                <p>CCNA – Switching, Routing & Wireless Essentials</p>
+            </div>
+            <div class="cert-card card-hover">
+                <img class="cert-img" src="cert_ccna_enterprise_networking_security.png" alt="CCNA Enterprise Networking & Security" />
+                <p>CCNA – Enterprise Networking, Security & Automation</p>
+            </div>
+            <div class="cert-card card-hover">
+                <img class="cert-img" src="cert_ccnp_enterprise.png" alt="CCNP Enterprise" />
+                <p>CCNP – Cisco Certified Network Professional Enterprise</p>
+            </div>
+            <div class="cert-card card-hover">
+                <img class="cert-img" src="cert_devnet_associate.png" alt="DevNet Associate" />
+                <p>DevNet – Cisco DevNet Associate</p>
+            </div>
+            <div class="cert-card card-hover">
+                <img class="cert-img" src="cert_cyberops_associate.png" alt="CyberOps Associate" />
+                <p>CyberOps Associate – Cisco CyberOps</p>
+            </div>
+            <div class="cert-card card-hover">
+                <img class="cert-img" src="cert_introduction_to_cybersecurity.png" alt="Introduction to Cybersecurity" />
+                <p>Introduction to Cybersecurity – Cisco</p>
+            </div>
+            <div class="cert-card card-hover">
+                <img class="cert-img" src="cert_junior_cybersecurity_analyst.png" alt="Junior Cybersecurity Analyst" />
+                <p>Junior Cybersecurity Analyst – Cisco</p>
+            </div>
+            <div class="cert-card card-hover">
+                <img class="cert-img" src="cert_ethical_hacker.png" alt="Ethical Hacker" />
+                <p>Ethical Hacker – Cisco</p>
+            </div>
+            <div class="cert-card card-hover">
+                <img class="cert-img" src="cert_cyber_threat_management.png" alt="Cyber Threat Management" />
+                <p>Cyber Threat Management – Cisco</p>
+            </div>
+            <div class="cert-card card-hover">
+                <img class="cert-img" src="cert_industrial_cybersecurity_essentials_2025.png" alt="Industrial Cybersecurity Essentials" />
+                <p>Industrial Cybersecurity Essentials (2025) – Cisco</p>
+            </div>
+            <div class="cert-card card-hover">
+                <img class="cert-img" src="cert_industrial_networking_essentials_2025.png" alt="Industrial Networking Essentials" />
+                <p>Industrial Networking Essentials (2025) – Cisco</p>
+            </div>
+            <div class="cert-card card-hover">
+                <img class="cert-img" src="cert_ccep.png" alt="CCEP Certificate" />
+                <p>CCEP – Certified Cybersecurity Educator Professional</p>
+            </div>
+            <div class="cert-card card-hover">
+                <img class="cert-img" src="cert_cisco_national_competition.png" alt="Cisco National Skill Competition" />
+                <p>Finalist – Cisco National Skill Competition 2025</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="fade">
+        <h2>Projects</h2>
+        <p>• C# College Management System</p>
+        <p>• C++ Graphics Train Journey Project</p>
+        <p>• Smart Water Quality Monitoring System Using Arduino for Real-time Detection of Water Quality Parameters (Microprocessor)</p>
+    </section>
+
+    <section id="contact" class="fade">
+        <h2>Contact Me</h2>
+        <button class="glow-btn" style="margin-top:20px;">Download CV</button>
+        <p>Email: <strong>abidjihan1123@gmail.com</strong></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/md-abidul-islam-1655882a6" target="_blank">md-abidul-islam</a></p>
+        <p>GitHub: <a href="https://github.com/abidjihan" target="_blank">abidjihan</a></p>
+    </section>
+
+    <footer>
+        <p>© 2025 MD. ABIDUL ISLAM | Portfolio Website</p>
+    </footer>
+
+    <!-- Certificate Modal -->
+    <div class="modal" id="certModal">
+        <span onclick="closeModal()">&times;</span>
+        <img id="modalImg" src="" alt="Certificate Full View" />
+    </div>
+
+    <script>
+        const navLinks = document.querySelectorAll('nav a');
+        const sections = document.querySelectorAll('section');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                sections.forEach(sec => sec.classList.remove('active'));
+                const targetId = link.getAttribute('href');
+                const target = document.querySelector(targetId);
+                target.classList.add('active');
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        const certImages = document.querySelectorAll('.cert-img');
+        const modal = document.getElementById('certModal');
+        const modalImg = document.getElementById('modalImg');
+
+        certImages.forEach(img => {
+            img.addEventListener('click', () => {
+                if(img.src && img.style.display !== 'none'){
+                    modal.style.display = 'flex';
+                    modalImg.src = img.src;
+                }
+            });
+        });
+
+        function closeModal(){
+            modal.style.display = 'none';
+        }
+
+        modal.addEventListener('click', e => {
+            if(e.target === modal) closeModal();
+        });
+    </script>
+</body>
+</html>
