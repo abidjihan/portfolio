@@ -18,6 +18,17 @@
             overflow-x: hidden;
         }
 
+        /* Particles Canvas */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+        }
+
         /* Animated Background */
         .bg-animation {
             position: fixed;
@@ -25,7 +36,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: -2;
             background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
         }
 
@@ -96,7 +107,7 @@
 
         /* Header */
         header {
-            background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+            background: transparent;
             padding: 80px 40px;
             text-align: center;
             position: relative;
@@ -104,14 +115,7 @@
         }
 
         header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: pulse 15s ease-in-out infinite;
+            display: none;
         }
 
         @keyframes pulse {
@@ -148,18 +152,53 @@
             font-size: 3rem;
             margin-bottom: 15px;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            min-height: 60px;
+        }
+
+        .typing-text {
+            display: inline-block;
+            border-right: 3px solid rgba(255, 255, 255, 0.7);
+            padding-right: 5px;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 49% { border-color: rgba(255, 255, 255, 0.7); }
+            50%, 100% { border-color: transparent; }
         }
 
         .subtitle {
             font-size: 1.3rem;
-            opacity: 0.95;
+            opacity: 0;
             margin-bottom: 10px;
+            animation: fadeIn 1s ease forwards;
+            animation-delay: 3s;
         }
 
         .info-text {
             font-size: 1.15rem;
-            opacity: 0.85;
+            opacity: 0;
             margin: 8px 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .info-text:nth-of-type(1) {
+            animation-delay: 3.5s;
+        }
+
+        .info-text:nth-of-type(2) {
+            animation-delay: 4s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 0.95;
+                transform: translateY(0);
+            }
         }
 
         section {
@@ -170,7 +209,7 @@
             max-width: 1000px;
             margin: 40px auto;
             padding: 50px 40px;
-            background: rgba(26, 31, 58, 0.7);
+            background: rgba(26, 31, 58, 0.75);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
@@ -284,7 +323,109 @@
             letter-spacing: 1px;
         }
 
-        /* Skills List */
+        /* Skills Progress Bars */
+        .skill-item {
+            margin-bottom: 35px;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .skill-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #5dade2;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-icon {
+            font-size: 1.3rem;
+        }
+
+        .skill-percentage {
+            font-size: 1rem;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 20px;
+            background: rgba(44, 62, 80, 0.6);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 2s ease-out;
+            position: relative;
+            width: 0;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .progress-bar.cyber {
+            background: linear-gradient(90deg, #e74c3c 0%, #c0392b 100%);
+            box-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
+        }
+
+        .progress-bar.network {
+            background: linear-gradient(90deg, #3498db 0%, #2980b9 100%);
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+        }
+
+        .progress-bar.security {
+            background: linear-gradient(90deg, #f39c12 0%, #e67e22 100%);
+            box-shadow: 0 0 10px rgba(243, 156, 18, 0.5);
+        }
+
+        .progress-bar.linux {
+            background: linear-gradient(90deg, #2ecc71 0%, #27ae60 100%);
+            box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+        }
+
+        .progress-bar.analysis {
+            background: linear-gradient(90deg, #9b59b6 0%, #8e44ad 100%);
+            box-shadow: 0 0 10px rgba(155, 89, 182, 0.5);
+        }
+
+        .skill-description {
+            margin-top: 8px;
+            font-size: 0.9rem;
+            color: #95a5a6;
+            font-style: italic;
+        }
+
+        /* Skills List (old style - removed) */
         #skills ul {
             list-style: none;
             margin-left: 0;
@@ -445,6 +586,7 @@
     </style>
 </head>
 <body>
+    <canvas id="particles-canvas"></canvas>
     <div class="bg-animation"></div>
 
     <nav id="mainNav">
@@ -460,7 +602,7 @@
     <header>
         <div class="profile-container">
             <div class="profile-pic">👨‍💻</div>
-            <h1>MD. ABIDUL ISLAM</h1>
+            <h1><span class="typing-text" id="typingText"></span></h1>
             <p class="subtitle">🔒 Cybersecurity Enthusiast • 🌐 Aspiring Network Professional • 🎓 Student</p>
             <p class="info-text">B.Sc. in CSE – American International University–Bangladesh (AIUB)</p>
             <p class="info-text">📧 abidjihan1123@gmail.com</p>
@@ -540,13 +682,76 @@
 
     <section id="skills">
         <h2>Technical Skills</h2>
-        <ul>
-            <li>🔐 Cybersecurity Fundamentals</li>
-            <li>🌐 Networking & Infrastructure</li>
-            <li>🔌 API Security Basics</li>
-            <li>🐧 Linux & Shell Scripting</li>
-            <li>📊 Packet Analysis (Wireshark)</li>
-        </ul>
+
+        <div class="skill-item">
+            <div class="skill-header">
+                <div class="skill-name">
+                    <span class="skill-icon">🔐</span>
+                    Cybersecurity Fundamentals
+                </div>
+                <div class="skill-percentage">70%</div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar cyber" data-width="70"></div>
+            </div>
+            <div class="skill-description">Threat analysis, security principles, and defense strategies</div>
+        </div>
+
+        <div class="skill-item">
+            <div class="skill-header">
+                <div class="skill-name">
+                    <span class="skill-icon">🌐</span>
+                    Networking & Infrastructure
+                </div>
+                <div class="skill-percentage">75%</div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar network" data-width="75"></div>
+            </div>
+            <div class="skill-description">CCNA, CCNP, routing, switching, and network design</div>
+        </div>
+
+        <div class="skill-item">
+            <div class="skill-header">
+                <div class="skill-name">
+                    <span class="skill-icon">🔌</span>
+                    API Security Basics
+                </div>
+                <div class="skill-percentage">55%</div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar security" data-width="55"></div>
+            </div>
+            <div class="skill-description">REST API security, authentication, and authorization</div>
+        </div>
+
+        <div class="skill-item">
+            <div class="skill-header">
+                <div class="skill-name">
+                    <span class="skill-icon">🐧</span>
+                    Linux & Shell Scripting
+                </div>
+                <div class="skill-percentage">65%</div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar linux" data-width="65"></div>
+            </div>
+            <div class="skill-description">Command line proficiency, bash scripting, system administration</div>
+        </div>
+
+        <div class="skill-item">
+            <div class="skill-header">
+                <div class="skill-name">
+                    <span class="skill-icon">📊</span>
+                    Packet Analysis (Wireshark)
+                </div>
+                <div class="skill-percentage">60%</div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar analysis" data-width="60"></div>
+            </div>
+            <div class="skill-description">Network traffic analysis, protocol analysis, troubleshooting</div>
+        </div>
     </section>
 
     <section id="certs">
@@ -650,6 +855,160 @@
     </div>
 
     <script>
+        // Particles Background Animation
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particlesArray = [];
+        const numberOfParticles = 80;
+        let mouse = {
+            x: null,
+            y: null,
+            radius: 150
+        };
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+        });
+
+        window.addEventListener('mouseout', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initParticles();
+        });
+
+        class Particle {
+            constructor(x, y, directionX, directionY, size, color) {
+                this.x = x;
+                this.y = y;
+                this.directionX = directionX;
+                this.directionY = directionY;
+                this.size = size;
+                this.color = color;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+
+            update() {
+                if (this.x + this.size > canvas.width || this.x - this.size < 0) {
+                    this.directionX = -this.directionX;
+                }
+                if (this.y + this.size > canvas.height || this.y - this.size < 0) {
+                    this.directionY = -this.directionY;
+                }
+
+                if (mouse.x != null && mouse.y != null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < mouse.radius + this.size) {
+                        if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
+                            this.x += 2;
+                        }
+                        if (mouse.x > this.x && this.x > this.size * 10) {
+                            this.x -= 2;
+                        }
+                        if (mouse.y < this.y && this.y < canvas.height - this.size * 10) {
+                            this.y += 2;
+                        }
+                        if (mouse.y > this.y && this.y > this.size * 10) {
+                            this.y -= 2;
+                        }
+                    }
+                }
+
+                this.x += this.directionX;
+                this.y += this.directionY;
+                this.draw();
+            }
+        }
+
+        function initParticles() {
+            particlesArray = [];
+            for (let i = 0; i < numberOfParticles; i++) {
+                let size = Math.random() * 4 + 2;
+                let x = Math.random() * (canvas.width - size * 2) + size;
+                let y = Math.random() * (canvas.height - size * 2) + size;
+                let directionX = (Math.random() * 0.6) - 0.3;
+                let directionY = (Math.random() * 0.6) - 0.3;
+                let color = `rgba(52, 152, 219, ${Math.random() * 0.6 + 0.6})`;
+
+                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+            }
+        }
+
+        function connectParticles() {
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let dx = particlesArray[a].x - particlesArray[b].x;
+                    let dy = particlesArray[a].y - particlesArray[b].y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 140) {
+                        let opacity = 1 - (distance / 140);
+                        ctx.strokeStyle = `rgba(52, 152, 219, ${opacity * 0.4})`;
+                        ctx.lineWidth = 1.5;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+            }
+
+            connectParticles();
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+
+        // Typing Animation for Name
+        const fullText = "MD. ABIDUL ISLAM";
+        let currentIndex = 0;
+        const typingElement = document.getElementById('typingText');
+
+        function typeText() {
+            if (currentIndex < fullText.length) {
+                typingElement.textContent += fullText[currentIndex];
+                currentIndex++;
+                setTimeout(typeText, 150); // 150ms per character
+            } else {
+                // Remove blinking cursor after typing is complete
+                setTimeout(() => {
+                    typingElement.style.borderRight = 'none';
+                }, 500);
+            }
+        }
+
+        // Start typing animation on page load
+        window.addEventListener('load', () => {
+            setTimeout(typeText, 800);
+        });
+
         // Navigation functionality
         document.addEventListener('DOMContentLoaded', function() {
             const navLinks = document.querySelectorAll('nav a');
@@ -680,10 +1039,30 @@
                             behavior: 'smooth', 
                             block: 'start' 
                         });
+
+                        // Animate progress bars if Skills section
+                        if (targetId === 'skills') {
+                            setTimeout(() => {
+                                animateProgressBars();
+                            }, 500);
+                        }
                     }
                 });
             });
+
+            // Animate progress bars on page load
+            setTimeout(() => {
+                animateProgressBars();
+            }, 1000);
         });
+
+        function animateProgressBars() {
+            const progressBars = document.querySelectorAll('.progress-bar');
+            progressBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                bar.style.width = width + '%';
+            });
+        }
 
         function openModal(card) {
             const img = card.querySelector('img');
@@ -707,4 +1086,3 @@
     </script>
 </body>
 </html>
-
