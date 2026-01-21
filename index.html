@@ -637,9 +637,7 @@
                 height: 50px;
                 font-size: 1.5rem;
             }
-     
-/* Responsive */
-@media (max-width: 768px) {
+        }
 
         @media (max-width: 768px) {
             /* Hide floating sidebar on mobile */
@@ -1872,7 +1870,9 @@ leaderboard in Let's Defend</strong></p>
                 modal.style.display = 'flex';
                 modalImg.src = profilePic.src;
             });
-        }function toggleCourses() {
+        }
+         // Toggle course visibility
+        function toggleCourses() {
             const moreCourses = document.getElementById('moreCourses');
             const btn = document.getElementById('seeMoreBtn');
             
@@ -1884,37 +1884,9 @@ leaderboard in Let's Defend</strong></p>
                 btn.textContent = 'See More';
             }
         }
-
-        // Back to Top Button
-        const backToTopBtn = document.getElementById('backToTop');
-
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add('show');
-            } else {
-                backToTopBtn.classList.remove('show');
-            }
-        });
-
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
     </script>
-        
-  
 </body>
 </html>
-
-
-
-
-
-
-
-
 
 
 
