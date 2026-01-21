@@ -949,6 +949,161 @@
         html {
             scroll-behavior: smooth;
         }
+        /* ============================================
+   PROJECT FLIP CARDS
+   ============================================ */
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 400px;
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.flip-card-front {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.flip-card-front .project-icon {
+    font-size: 5rem;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+}
+
+.flip-card-front h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.flip-card-front .project-tag {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+}
+
+.flip-card-back {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.flip-card-back h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.flip-card-back p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.flip-card-back .tech-stack {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tech-badge {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    backdrop-filter: blur(5px);
+}
+
+.project-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.project-btn {
+    padding: 10px 25px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: all 0.3s;
+    display: inline-block;
+}
+
+.project-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.4);
+    background: white;
+}
+
+/* Different gradient colors for each project */
+.flip-card-front-2 {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.flip-card-back-2 {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.flip-card-front-3 {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.flip-card-back-3 {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+.flip-card-front-4 {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+}
+
+.flip-card-back-4 {
+    background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+}
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -1272,13 +1427,110 @@ leaderboard in Let's Defend</strong></p>
             </div>
         </div>
     </section>
-
     <section id="projects">
-        <h2>Projects</h2>
-        <p><strong>💻 C# College Management System</strong></p>
-        <p><strong>🚂 C++ Graphics Train Journey Project</strong></p>
-        <p><strong>💧 Smart Water Quality Monitoring System</strong> - Using Arduino for Real-time Detection of Water Quality Parameters (Microprocessor)</p>
-    </section>
+    <h2>Projects</h2>
+    <div class="projects-container">
+        
+        <!-- Project 1: College Management System -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <div class="project-icon">💻</div>
+                    <h3>College Management System</h3>
+                    <span class="project-tag">C# Application</span>
+                </div>
+                <div class="flip-card-back">
+                    <h3>College Management System</h3>
+                    <p>A comprehensive management system for educational institutions built with C# and .NET framework.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">C#</span>
+                        <span class="tech-badge">.NET</span>
+                        <span class="tech-badge">SQL Server</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/abidjihan" target="_blank" class="project-btn">View Code</a>
+                        <a href="#" class="project-btn">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Project 2: Train Journey Graphics -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front flip-card-front-2">
+                    <div class="project-icon">🚂</div>
+                    <h3>Train Journey Graphics</h3>
+                    <span class="project-tag">C++ Graphics</span>
+                </div>
+                <div class="flip-card-back flip-card-back-2">
+                    <h3>Train Journey Project</h3>
+                    <p>An animated graphics project simulating a train journey using C++ graphics libraries.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">C++</span>
+                        <span class="tech-badge">Graphics.h</span>
+                        <span class="tech-badge">Animation</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/abidjihan" target="_blank" class="project-btn">View Code</a>
+                        <a href="#" class="project-btn">Demo Video</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Project 3: Water Quality Monitor -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front flip-card-front-3">
+                    <div class="project-icon">💧</div>
+                    <h3>Water Quality Monitor</h3>
+                    <span class="project-tag">IoT Project</span>
+                </div>
+                <div class="flip-card-back flip-card-back-3">
+                    <h3>Smart Water Quality System</h3>
+                    <p>Real-time water quality monitoring system using Arduino for detecting various water parameters.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Arduino</span>
+                        <span class="tech-badge">Sensors</span>
+                        <span class="tech-badge">IoT</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/abidjihan" target="_blank" class="project-btn">View Code</a>
+                        <a href="#" class="project-btn">Documentation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 4: Airplane Management System -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front flip-card-front-4">
+                    <div class="project-icon">✈️</div>
+                    <h3>Airplane Management System</h3>
+                    <span class="project-tag">Java Application</span>
+                </div>
+                <div class="flip-card-back flip-card-back-4">
+                    <h3>Airplane Management System</h3>
+                    <p>A comprehensive flight and aircraft management system built with Java for managing airline operations.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Java</span>
+                        <span class="tech-badge">Swing/JavaFX</span>
+                        <span class="tech-badge">MySQL</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/abidjihan" target="_blank" class="project-btn">View Code</a>
+                        <a href="#" class="project-btn">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+    
 
     <section id="contact">
         <h2>Get In Touch</h2>
@@ -1635,6 +1887,7 @@ leaderboard in Let's Defend</strong></p>
     </script>
 </body>
 </html>
+
 
 
 
