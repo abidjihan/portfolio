@@ -149,7 +149,6 @@
             animation: fadeIn 1s forwards;
             animation-delay: 1s;
             text-shadow: 0 0 5px #0f0;
-            overflow-x: hidden;
         }
 
         /* Enter Button */
@@ -174,7 +173,7 @@
             text-transform: uppercase;
             letter-spacing: 3px;
             position: relative;
-            overflow: auto;
+            overflow: hidden;
         }
 
         .enter-btn::before {
@@ -225,16 +224,10 @@
 
             .terminal-line {
                 font-size: 0.9rem;
-                 white-space: normal;
-                  word-break: break-word;
-                  padding-right: 6px; 
-            }
-            .terminal-content {
-                padding-right: 6px;
             }
 
             .ascii-art {
-                font-size: 0.3rem;
+                font-size: 0.5rem;
             }
 
             .enter-btn {
@@ -289,7 +282,7 @@
 
             <div class="enter-button">
                 <button class="enter-btn" onclick="enterPortfolio()">
-                    <span class="glitch">[ SEE MORE ]</span>
+                    <span class="glitch">[ ENTER ]</span>
                 </button>
             </div>
         </div>
